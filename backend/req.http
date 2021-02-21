@@ -1,0 +1,9 @@
+POST http://localhost:4000/notes/create
+content-type: application/json
+
+{
+    "name": "Nota 4",
+    "description": "Descripcion nota 4",
+    "tags": ["art", "post", "Dbug", "trailer"],
+    "imgUrl": "https://scontent.fsmr1-1.fna.fbcdn.net/v/t1.0-9/151587694_1057984134708511_62875427644772728_n.jpg?_nc_cat=110&ccb=3&_nc_sid=09cbfe&_nc_ohc=EjZaRHauQxcAX_DTbLj&_nc_ht=scontent.fsmr1-1.fna&oh=a0031252f5c68662f2529c5f24a8670a&oe=6059E9ED"
+}
