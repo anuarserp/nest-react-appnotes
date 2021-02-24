@@ -20,11 +20,8 @@ export class NotesController {
     */
    @Get()
    async getNotes(@Res() res) {
-      const notes = await this.notesService.findAll();
-      return res.status(HttpStatus.OK).json({
-         message: "Peticion recibida satisfactoriamente",
-         notes,
-      });
+      const data = await this.notesService.findAll();
+      return res.status(HttpStatus.OK).json(data);
    }
    @Get(":id")
    async getOneNote(@Param("id") id: string) {
@@ -32,22 +29,19 @@ export class NotesController {
    }
    @Post("/create")
    async createNote(@Res() res, @Body() createNoteDto: CreateNoteDto) {
-      const note = await this.notesService.createNote(createNoteDto);
-      return res.status(HttpStatus.OK).json({
-         message: "Nota creada satisfactoriamente",
-         note,
-      });
+      const data = await this.notesService.createNote(createNoteDto);
+      return res.status(HttpStatus.OK).json(data);
    }
 
    @Put(":id")
    async editOne(@Param("id") id: string, @Body() dto: EditNoteDto) {
       const data = await this.notesService.updateNote(id, dto);
-      return { message: "Nota actulizada satisfactoriamente", data };
+      return data;
    }
 
    @Delete(":id")
    async deleteOne(@Param("id") id: string) {
       const data = await this.notesService.deleteNote(id);
-      return { message: "Nota eliminada satisfactoriamente", data };
+      return data;
    }
 }
