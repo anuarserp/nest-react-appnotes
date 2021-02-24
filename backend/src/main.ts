@@ -11,6 +11,8 @@ async function bootstrap() {
          whitelist: true,
       })
    );
+   //cors
+   app.enableCors();
 
    //puerto
    await app.listen(4000);

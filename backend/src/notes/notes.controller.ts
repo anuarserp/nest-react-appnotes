@@ -20,10 +20,10 @@ export class NotesController {
     */
    @Get()
    async getNotes(@Res() res) {
-      const data = await this.notesService.findAll();
+      const notes = await this.notesService.findAll();
       return res.status(HttpStatus.OK).json({
          message: "Peticion recibida satisfactoriamente",
-         data,
+         notes,
       });
    }
    @Get(":id")
@@ -32,10 +32,10 @@ export class NotesController {
    }
    @Post("/create")
    async createNote(@Res() res, @Body() createNoteDto: CreateNoteDto) {
-      const data = await this.notesService.createNote(createNoteDto);
+      const note = await this.notesService.createNote(createNoteDto);
       return res.status(HttpStatus.OK).json({
          message: "Nota creada satisfactoriamente",
-         data,
+         note,
       });
    }
 
