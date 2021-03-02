@@ -1,0 +1,10 @@
+POST http://localhost:4000/notes/create
+content-type: application/json
+
+{
+    "name": "Nota 7",
+    "description": "description  6",
+    "tags": ["art", "post", "Dbug", "trailer"],
+    "imgUrl": "https://scontent.fsmr1-1.fna.fbcdn.net/v/t1.0-9/136757720_1033270433846548_5785608081941714995_n.jpg?_nc_cat=111&ccb=3&_nc_sid=174925&_nc_eui2=AeEAcQrb_O3Jj4r-5lOK4hAjApXQSw9lPKACldBLD2U8oFmSwhDncOB4o0xL5cVflfCLIbg0RHcM-kyZwOIKJSAb&_nc_ohc=5LZNLmsokowAX-zlufq&_nc_oc=AQkSnkKXEJ-nujV7-laqh3m2BQL0H4OXbAgnhqX136IOo-guwG5ambSVFdh3Chs9QCM&_nc_ht=scontent.fsmr1-1.fna&oh=ce4115d0a06d4c17c2ba93bd1d0fd6d2&oe=606128A5"
+    
+}

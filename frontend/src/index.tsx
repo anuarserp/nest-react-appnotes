@@ -6,7 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
    <React.StrictMode>
-      <NoteList></NoteList>
+      <div className="container mx-auto">
+         <NoteList></NoteList>
+      </div>
    </React.StrictMode>,
    document.getElementById("root")
 );

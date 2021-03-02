@@ -2,7 +2,7 @@ export interface Note {
    description: string;
    tags: string[];
    name: string;
-   url: string;
+   imgUrl: string;
    _id?: string;
 }
 

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Note } from "../interfaces/notes.interface";
 import { getNotes } from "../services/notes.services";
+import NoteItem from "./NoteItem";
 
 function NoteList() {
    const [notes, setNotes] = useState<Note[]>([]);
    const loadNotes = async () => {
       const res = await getNotes();
       setNotes(res.data);
-      console.log(res.data.);
+      console.log(res.data);
    };
 
    useEffect(() => {
@@ -18,7 +19,7 @@ function NoteList() {
          <div className="min-h-screen flex justify-center">
             <div className="mt-4">
                <div className="grid grid-cols-4 gap-4">
-                  {/*notes.map((note) => {
+                  {notes.map((note) => {
                      return (
                         <NoteItem
                            loadNotes={loadNotes}
@@ -26,7 +27,7 @@ function NoteList() {
                            note={note}
                         />
                      );
-                  })*/}
+                  })}
                </div>
             </div>
          </div>
