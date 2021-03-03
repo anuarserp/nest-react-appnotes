@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
    <React.StrictMode>
-      <div className="container mx-auto">
-         <NoteList></NoteList>
+      <div className="bg-gray-100">
+         <div className="container mx-auto">
+            <NoteList />
+         </div>
       </div>
    </React.StrictMode>,
    document.getElementById("root")

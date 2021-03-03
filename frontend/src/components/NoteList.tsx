@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Note } from "../interfaces/notes.interface";
 import { getNotes } from "../services/notes.services";
+import NoteAdd from "./NoteAdd";
 import NoteItem from "./NoteItem";
 
 function NoteList() {
@@ -28,6 +29,7 @@ function NoteList() {
                         />
                      );
                   })}
+                  <NoteAdd />
                </div>
             </div>
          </div>

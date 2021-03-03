@@ -7,9 +7,9 @@ function NoteItem(props: Props) {
    return (
       <div
          className="relative mx-2 mb-3 flex-1 transform hover:scale-110 motion-reduce:transform-none transition duration-500 ease-in-out
-    bg-white border-2 border-gray-300 py-4 px-6 rounded-xl tracking-wide shadow-lg"
+    bg-white border border-red-400 py-4 px-6 rounded-xl tracking-wide shadow-lg"
       >
-         <div className="pb-10">
+         <div className="pb-12">
             <div id="header" className="flex items-center mb-4">
                {note.imgUrl ? (
                   <img
@@ -48,7 +48,10 @@ function NoteItem(props: Props) {
                </q>
             </div>
          </div>
-         <div className="flex fixed bottom-0 right-0">
+         <div className="flex fixed bottom-0 right-0 m-2">
+            <button className="inline-block uppercase p-4 items-center flex  bg-green-500 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full m-1 w-12 h-12">
+               <i className="fas fa-check"></i>
+            </button>
             <button className="inline-block uppercase items-center p-4 flex bg-blue-600 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full m-1 w-12 h-12">
                <i className="fas fa-edit"></i>
             </button>
