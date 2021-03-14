@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReactDOM from "react-dom";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
@@ -7,11 +8,17 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
    <React.StrictMode>
-      <div className="bg-gray-100">
-         <div className="container mx-auto">
-            <NoteList />
+      <BrowserRouter>
+         <div className="bg-gray-100">
+            <div className="container mx-auto">
+               <Switch>
+                  <Route exact path="/" component={NoteList} />
+                  <Route exact path="/newnote" component={NoteForm} />
+                  <Route exact path="/update/:id" component={NoteForm} />
+               </Switch>
+            </div>
          </div>
-      </div>
+      </BrowserRouter>
    </React.StrictMode>,
    document.getElementById("root")
 );

@@ -1,6 +1,29 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { Note, Params } from "../interfaces/notes.interface";
+import * as noteServices from "../services/notes.services";
 
 function NoteForm() {
+   const params = useParams<Params>();
+
+   const [note, setNote] = useState<Note>({
+      name: "",
+      tags: [],
+      description: "",
+      imgUrl: "",
+   });
+
+   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (!params.id) {
+         await noteServices.createNote(note);
+         useHistory().push("/");
+      } else {
+         await noteServices.updateNote(params.id, note);
+         useHistory().push("/");
+      }
+   };
+
    return (
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
          <div className="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
@@ -16,49 +39,51 @@ function NoteForm() {
                      </p>
                   </div>
                </div>
-               <div className="divide-y divide-gray-200">
-                  <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                     <div className="flex flex-col">
-                        <label className="leading-loose">Nombre</label>
-                        <input
-                           type="text"
-                           className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                           placeholder="Event title"
-                        />
+               <form onSubmit={handleSubmit}>
+                  <div className="divide-y divide-gray-200">
+                     <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                        <div className="flex flex-col">
+                           <label className="leading-loose">Nombre</label>
+                           <input
+                              type="text"
+                              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                              placeholder="Título de la nota"
+                           />
+                        </div>
+                        <div className="flex flex-col">
+                           <label className="leading-loose">Tags</label>
+                           <input
+                              type="text"
+                              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                              placeholder="#Tag"
+                           />
+                        </div>
+                        <div className="flex flex-col">
+                           <label className="leading-loose">Url Imagen</label>
+                           <input
+                              type="text"
+                              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                              placeholder="Optional"
+                           />
+                        </div>
+                        <div className="flex flex-col">
+                           <label className="leading-loose">Descripción</label>
+                           <textarea
+                              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                              placeholder="Describe esta nota"
+                           />
+                        </div>
                      </div>
-                     <div className="flex flex-col">
-                        <label className="leading-loose">Tags</label>
-                        <input
-                           type="text"
-                           className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                           placeholder="#Tag"
-                        />
-                     </div>
-                     <div className="flex flex-col">
-                        <label className="leading-loose">Url Imagen</label>
-                        <input
-                           type="text"
-                           className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                           placeholder="Optional"
-                        />
-                     </div>
-                     <div className="flex flex-col">
-                        <label className="leading-loose">Descripción</label>
-                        <textarea
-                           className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                           placeholder="Describe esta nota"
-                        />
+                     <div className="pt-4 flex items-center space-x-4">
+                        <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
+                           <i className="fas fa-times mr-4"></i>Cancelar
+                        </button>
+                        <button className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">
+                           Create
+                        </button>
                      </div>
                   </div>
-                  <div className="pt-4 flex items-center space-x-4">
-                     <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
-                        <i className="fas fa-times mr-4"></i>Cancelar
-                     </button>
-                     <button className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">
-                        Create
-                     </button>
-                  </div>
-               </div>
+               </form>
             </div>
          </div>
       </div>

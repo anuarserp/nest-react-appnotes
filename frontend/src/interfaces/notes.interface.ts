@@ -10,3 +10,7 @@ export interface Props {
    note: Note;
    loadNotes: () => void;
 }
+
+export interface Params {
+   id?: string;
+}
