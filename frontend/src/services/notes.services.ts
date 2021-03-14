@@ -6,17 +6,17 @@ export const getNotes = async () => {
 };
 
 export const createNote = async (note: Note) => {
-   return await axios.post("http://localhost:4000/videos", note);
+   return await axios.post("http://localhost:4000/notes", note);
 };
 
 export const getOneNote = async (id: string) => {
-   return await axios.get<Note>(`http://localhost:4000/videos/${id}`);
+   return await axios.get<Note>(`http://localhost:4000/notes/${id}`);
 };
 
 export const updateNote = async (id: string, note: Note) => {
-   return await axios.put<Note>(`http://localhost:4000/videos/${id}`, note);
+   return await axios.put<Note>(`http://localhost:4000/notes/${id}`, note);
 };
 
 export const deleteNote = async (id: string) => {
-   return await axios.delete<Note>(`http://localhost:4000/videos/${id}`);
+   return await axios.delete<Note>(`http://localhost:4000/notes/${id}`);
 };

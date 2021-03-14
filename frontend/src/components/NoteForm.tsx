@@ -4,6 +4,7 @@ import { Note, Params } from "../interfaces/notes.interface";
 import * as noteServices from "../services/notes.services";
 
 function NoteForm() {
+   const history = useHistory();
    const params = useParams<Params>();
 
    const [note, setNote] = useState<Note>({
@@ -17,10 +18,10 @@ function NoteForm() {
       e.preventDefault();
       if (!params.id) {
          await noteServices.createNote(note);
-         useHistory().push("/");
+         history.push("/");
       } else {
          await noteServices.updateNote(params.id, note);
-         useHistory().push("/");
+         history.push("/");
       }
    };
 
